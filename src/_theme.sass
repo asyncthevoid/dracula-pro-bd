@@ -1,0 +1,194 @@
+@use "sass:math"
+
+// different shadings of the background color
+$background-shade-1: #{darken($background, 3%)}
+$background-shade-2: #{darken($background, 6%)}
+$background-shade-3: #{darken($background, 9%)}
+
+// overwrite css variables
+\:root, .theme-dark, .theme-light
+  --background-primary: #{$background}
+  --background-secondary: #{$background-shade-1}
+  --background-secondary-alt: #{$background-shade-2}
+  --background-tertiary: #{$background-shade-3}
+  --background-accent: #{$selection}
+  // call overlay is using this - a shade in between bg and bg-shade-1
+  --background-floating: #{darken($background, 1.5%)}
+  --background-mentioned: #{adjust-color($comment, $alpha: -0.75)}
+  --background-mentioned-hover: #{adjust-color($comment, $alpha: -0.8)}
+  --background-modifier-accent: #{adjust-color($comment, $alpha: -0.75)}
+  --background-modifier-active: #{adjust-color($foreground, $alpha: -0.84)}
+  --background-modifier-hover: #{adjust-color($selection, $alpha: -0.92)}
+  --background-modifier-selected: #{adjust-color($selection, $alpha: -0.76)}
+
+  --activity-card-background: #{$background}
+  --channeltextarea-background: #{$selection}
+  --interactive-normal: #{$foreground}
+  --interactive-muted: #{$comment}
+  --rs-online-color: #{$green}
+  --rs-idle-color: #{$orange}
+  --rs-dnd-color: #{$red}
+  --rs-offline-color: #{$selection}
+  --rs-streaming-color: #{$purple}
+  --rs-invisible-color: #{$comment}
+
+  --header-primary: #{$foreground}
+  --header-secondary: #{darken($foreground, 6%)}
+  --text-normal: #{$foreground}
+  --text-muted: #{$comment}
+  --text-link: #{$cyan}
+  --text-positive: #{$green}
+  --text-warning: #{$orange}
+  --text-danger: #{$red}
+  --text-brand: #{$comment}
+
+  // not sure about these, might be TODO
+  --info-positive-text: #fff
+  --info-warning-text: #fff
+  --info-danger-text: #fff
+  --info-help-text: #fff
+  --info-help-background: hsla(212, calc(var(--saturation-factor, 1) * 100%), 43.9%, 0.1)
+  --info-help-foreground: hsl(212, calc(var(--saturation-factor, 1) * 100%), 43.9%)
+
+  // weighted brand colors
+  --brand-experiment:     #{$comment}
+  --brand-experiment-100: #{lighten($comment, math.div(90%, 2))}
+  --brand-experiment-130: #{lighten($comment, math.div(85%, 2))}
+  --brand-experiment-160: #{lighten($comment, math.div(80%, 2))}
+  --brand-experiment-200: #{lighten($comment, math.div(75%, 2))}
+  --brand-experiment-230: #{lighten($comment, math.div(70%, 2))}
+  --brand-experiment-260: #{lighten($comment, math.div(65%, 2))}
+  --brand-experiment-300: #{lighten($comment, math.div(60%, 2))}
+  --brand-experiment-330: #{lighten($comment, math.div(50%, 2))}
+  --brand-experiment-360: #{lighten($comment, math.div(40%, 2))}
+  --brand-experiment-400: #{lighten($comment, math.div(30%, 2))}
+  --brand-experiment-430: #{lighten($comment, math.div(20%, 2))}
+  --brand-experiment-460: #{lighten($comment, math.div(10%, 2))}
+  --brand-experiment-500: #{$comment}
+  --brand-experiment-530: #{darken($comment, math.div(10%, 2))}
+  --brand-experiment-560: #{darken($comment, math.div(20%, 2))}
+  --brand-experiment-600: #{darken($comment, math.div(30%, 2))}
+  --brand-experiment-630: #{darken($comment, math.div(40%, 2))}
+  --brand-experiment-660: #{darken($comment, math.div(50%, 2))}
+  --brand-experiment-700: #{darken($comment, math.div(60%, 2))}
+  --brand-experiment-730: #{darken($comment, math.div(65%, 2))}
+  --brand-experiment-760: #{darken($comment, math.div(70%, 2))}
+  --brand-experiment-800: #{darken($comment, math.div(75%, 2))}
+  --brand-experiment-830: #{darken($comment, math.div(80%, 2))}
+  --brand-experiment-860: #{darken($comment, math.div(85%, 2))}
+  --brand-experiment-900: #{darken($comment, math.div(90%, 2))}
+
+  // similar to other brand colors, except alpha only
+  --brand-experiment-05a: #{adjust-color($comment, $alpha: -0.95)}
+  --brand-experiment-10a: #{adjust-color($comment, $alpha: -0.90)}
+  --brand-experiment-15a: #{adjust-color($comment, $alpha: -0.85)}
+  --brand-experiment-20a: #{adjust-color($comment, $alpha: -0.80)}
+  --brand-experiment-25a: #{adjust-color($comment, $alpha: -0.75)}
+  --brand-experiment-30a: #{adjust-color($comment, $alpha: -0.70)}
+  --brand-experiment-35a: #{adjust-color($comment, $alpha: -0.65)}
+  --brand-experiment-40a: #{adjust-color($comment, $alpha: -0.60)}
+  --brand-experiment-45a: #{adjust-color($comment, $alpha: -0.55)}
+  --brand-experiment-50a: #{adjust-color($comment, $alpha: -0.50)}
+  --brand-experiment-55a: #{adjust-color($comment, $alpha: -0.45)}
+  --brand-experiment-60a: #{adjust-color($comment, $alpha: -0.40)}
+  --brand-experiment-65a: #{adjust-color($comment, $alpha: -0.35)}
+  --brand-experiment-70a: #{adjust-color($comment, $alpha: -0.30)}
+  --brand-experiment-75a: #{adjust-color($comment, $alpha: -0.25)}
+  --brand-experiment-80a: #{adjust-color($comment, $alpha: -0.20)}
+  --brand-experiment-85a: #{adjust-color($comment, $alpha: -0.15)}
+  --brand-experiment-90a: #{adjust-color($comment, $alpha: -0.10)}
+  --brand-experiment-95a: #{adjust-color($comment, $alpha: -0.05)}
+
+  // scrollbars
+  --scrollbar-thin-thumb: #{$selection}
+  --scrollbar-thin-track: #{$background-shade-1}
+  --scrollbar-auto-thumb: #{$selection}
+  --scrollbar-auto-track: #{$background-shade-1}
+  --scrollbar-auto-scrollbar-color-track: #{$selection}
+  --scrollbar-auto-scrollbar-color-thumb: #{$background-shade-1}
+
+  --interactive-hover: #{$foreground}
+  --interactive-active: #{$foreground}
+  --status-warning-text: #000
+  --channels-default: #{$foreground}
+
+
+// selected server / discord logo wrapper
+.wrapper-1BJsBx.selected-bZ3Lue > div[class^="childWrapper"]
+  background-color: $selection !important
+
+
+// some popouts
+div[class^="layerContainer"] > div[class^="layer"]
+  // search popout
+  > div[class^="container"]
+    background-color: $background-shade-1 !important
+
+  // stream popout
+  > div[class^="focusLock"] > div[class^="modalSize"]
+    background-color: $background-shade-1 !important
+
+    div[class*="footer"]
+      background-color: $background-shade-2 !important
+
+  // TODO: gradients in search popout
+  //> ul > div[class^="option"]::after
+
+
+// 'peopleList' background, friendslist, is not set via the variable
+div[class^="base"] > div[class^="content"] > div[class^="container"]
+  background-color: $background !important
+
+
+// the thin line in fron of @ mentioned messages
+div[class*="mentioned"]::before
+  background-color: adjust-color($comment, $alpha: -0.25) !important
+
+
+// server folder settings
+div[class^="focusLock"]
+  > div[class^="root"]
+    background-color: $background !important
+
+    > div[class*="footer"]
+      background-color: $background-shade-1 !important
+
+
+// upload modal
+div[class^="uploadModal"]
+  background-color: $background !important
+
+  > div[class^="footer"]
+    background-color: $background-shade-1 !important
+
+
+// 'Add a server' popup - this uses the light theme by default.
+// only the footer doesn't use css variables as of now.
+.theme-light > div[class^="focusLock"] > div[class^="root"] > div[class^="container"] div[class*="footer"]
+  background-color: $background-shade-1 !important
+
+
+// code highlighting
+code 
+  color: $foreground !important
+span
+  .hljs-built_in 
+    color: $purple !important
+  .hljs-keyword 
+    color: $pink !important
+  .hljs-title 
+    color: $cyan !important
+  .hljs-attr 
+    color: $foreground !important
+  .hljs-string 
+    color: $yellow !important
+  .hljs-number 
+    color: $purple !important
+  .hljs-symbol 
+    color: $orange !important
+  .hljs-meta 
+    color: $foreground !important
+  .hljs-meta-keyword 
+    color: $pink !important
+  .hljs-meta-string 
+    color: $orange !important
