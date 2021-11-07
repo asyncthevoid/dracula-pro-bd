@@ -6,7 +6,7 @@
 
 ## Install
 
-All instructions can be found at [draculatheme.com/betterdiscord](https://draculatheme.com/betterdiscord).
+Download and move the [dracula.theme.css](https://github.com/nekowinston/betterdiscord/raw/sass-pipeline/dist/dracula.theme.css) file to your BetterDiscord themes folder.
 
 ## Why this fork?
 In contrast to the previous BetterDiscord theme, this uses a Sass build pipeline, which makes swapping out the base colors easy.
